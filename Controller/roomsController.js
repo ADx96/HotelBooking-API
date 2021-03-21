@@ -22,7 +22,7 @@ exports.roomsList = async (req, res, next) => {
       attributes: { exclude: ["createdAt", "updatedAt"] },
       include: {
         model: Hotel,
-        as: "Rooms",
+        as: "HotelRooms",
         attributes: ["id"],
       },
     });

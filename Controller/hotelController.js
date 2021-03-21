@@ -1,4 +1,4 @@
-const { Hotel } = require("../db/models");
+const { Hotel, Rooms } = require("../db/models");
 
 exports.fetchHotel = async (id, next) => {
   try {
@@ -9,6 +9,10 @@ exports.fetchHotel = async (id, next) => {
   }
 };
 exports.hotelCreate = async (req, res, next) => {
+  if (req.file) {
+    req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
+  }
+
   try {
     const newHotel = await Hotel.create(req.body);
     res.status(201).json(newHotel);
@@ -21,9 +25,9 @@ exports.hotelList = async (req, res, next) => {
     const hotels = await Hotel.findAll({
       attributes: { exclude: ["createdAt", "updatedAt"] },
       include: {
-        model: Hotel,
-        as: "Hotels",
-        attributes: ["id"],
+        model: Rooms,
+        as: "HotelRooms",
+        attributes: ["Roomnum"],
       },
     });
     res.json(hotels);

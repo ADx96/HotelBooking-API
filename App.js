@@ -2,6 +2,8 @@ const express = require("express");
 const BookingRoutes = require("./routes/bookingRoutes");
 const HotelsRoutes = require("./routes/HotelRouts");
 const RoomsRoutes = require("./routes/RoomsRoutes");
+const path = require("path");
+
 const db = require("./db/models");
 
 const cors = require("cors");
@@ -15,6 +17,8 @@ const slugify = require("slugify");
 app.use("/Bookings", BookingRoutes);
 app.use("/Hotels", HotelsRoutes);
 app.use("/Rooms", RoomsRoutes);
+app.use("/media", express.static(path.join(__dirname, "media")));
+
 //App function
 const run = async () => {
   try {
