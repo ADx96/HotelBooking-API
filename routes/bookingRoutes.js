@@ -27,9 +27,9 @@ router.get("/", bookingList);
 router.post("/create", bookingCreate);
 
 // Deleting Products
-router.delete("/:id", bookingDelete);
+router.delete("/:bookingId", bookingDelete);
 
 // Updating Products
-router.put("/:id", bookingUpdate);
+router.put("/:bookingId", bookingUpdate);
 
 module.exports = router;
