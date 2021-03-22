@@ -24,7 +24,7 @@ router.param("contactId", async (req, res, next, contactId) => {
 router.get("/", contactList);
 
 // Adding Products
-router.post("/send", contactCreate);
+router.post("/", contactCreate);
 
 // Deleting Products
 router.delete("/:contactId", contactDelete);

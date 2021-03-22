@@ -6,7 +6,6 @@ const {
   roomsUpdate,
   roomsDelete,
   roomsList,
-  roomsCreate,
   fetchRooms,
 } = require("../Controller/roomsController");
 
@@ -23,9 +22,6 @@ router.param("roomId", async (req, res, next, roomId) => {
 });
 // Product list
 router.get("/", roomsList);
-
-// Adding Products
-router.post("/book", roomsCreate);
 
 // Deleting Products
 router.delete("/:roomId", roomsDelete);

@@ -27,6 +27,7 @@ app.use((err, req, res, next) => {
   });
   next(err);
 });
+
 //App function
 const run = async () => {
   try {
@@ -43,4 +44,5 @@ const run = async () => {
 app.use((req, res, next) => {
   res.status(404).json({ message: "Path not found" });
 });
+
 run();

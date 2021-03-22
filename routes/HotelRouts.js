@@ -5,6 +5,7 @@ const router = express.Router();
 const {
   hotelCreate,
   hotelList,
+  roomsCreate,
   hotelUpdate,
   hotelDelete,
   fetchHotel,
@@ -25,7 +26,8 @@ router.param("hotelId", async (req, res, next, hotelId) => {
 router.get("/", hotelList);
 
 // Adding Products
-router.post("/create", hotelCreate);
+router.post("/", hotelCreate);
+router.post("/:hotelId/rooms", roomsCreate);
 
 // Deleting Products
 router.delete("/:hotelId", hotelDelete);

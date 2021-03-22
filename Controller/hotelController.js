@@ -20,6 +20,15 @@ exports.hotelCreate = async (req, res, next) => {
     next(error);
   }
 };
+exports.roomsCreate = async (req, res, next) => {
+  try {
+    req.body.hotelId = req.hotel.id;
+    const newRooms = await Rooms.create(req.body);
+    res.status(201).json(newRooms);
+  } catch (error) {
+    next(error);
+  }
+};
 exports.hotelList = async (req, res, next) => {
   try {
     const hotels = await Hotel.findAll({

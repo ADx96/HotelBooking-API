@@ -24,7 +24,7 @@ router.param("bookingId", async (req, res, next, bookingId) => {
 router.get("/", bookingList);
 
 // Adding Products
-router.post("/create", bookingCreate);
+router.post("/", bookingCreate);
 
 // Deleting Products
 router.delete("/:bookingId", bookingDelete);
