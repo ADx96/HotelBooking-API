@@ -1,5 +1,6 @@
 const express = require("express");
 const BookingRoutes = require("./routes/bookingRoutes");
+const ContactRoutes = require("./routes/contactRoutes");
 const HotelsRoutes = require("./routes/HotelRouts");
 const RoomsRoutes = require("./routes/RoomsRoutes");
 const path = require("path");
@@ -14,6 +15,7 @@ app.use(cors());
 const slugify = require("slugify");
 
 //Routes
+app.use("/Contact", ContactRoutes);
 app.use("/Bookings", BookingRoutes);
 app.use("/Hotels", HotelsRoutes);
 app.use("/Rooms", RoomsRoutes);

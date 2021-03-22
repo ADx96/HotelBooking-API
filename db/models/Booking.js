@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Room: {
+    Roomnum: {
       type: DataTypes.INTEGER,
       defaultValue: 5,
       validate: {

@@ -9,8 +9,8 @@ const {
   fetchBooking,
 } = require("../Controller/bookingController");
 
-router.param("id", async (req, res, next, id) => {
-  const Bookings = await fetchBooking(id, next);
+router.param("bookingId", async (req, res, next, bookingId) => {
+  const Bookings = await fetchBooking(bookingId, next);
   if (Bookings) {
     req.Booking = Bookings;
     next();

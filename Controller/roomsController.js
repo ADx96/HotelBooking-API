@@ -1,8 +1,8 @@
-const { Rooms } = require("../db/models");
+const { Rooms, Hotel } = require("../db/models");
 
-exports.fetchRooms = async (id, next) => {
+exports.fetchRooms = async (roomId, next) => {
   try {
-    const rooms = await Rooms.findByPk(id);
+    const rooms = await Rooms.findByPk(roomId);
     return rooms;
   } catch (error) {
     next(error);

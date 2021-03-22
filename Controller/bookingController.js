@@ -1,8 +1,8 @@
 const { Booking } = require("../db/models");
 
-exports.fetchBooking = async (id, next) => {
+exports.fetchBooking = async (bookingId, next) => {
   try {
-    const booking = await Booking.findByPk(id);
+    const booking = await Booking.findByPk(bookingId);
     return booking;
   } catch (error) {
     next(error);

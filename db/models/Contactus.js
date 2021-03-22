@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true,
     },
-    note: {
+    message: {
       type: DataTypes.STRING,
       allowNull: false,
     },

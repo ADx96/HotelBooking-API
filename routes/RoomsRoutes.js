@@ -10,8 +10,8 @@ const {
   fetchRooms,
 } = require("../Controller/roomsController");
 
-router.param("id", async (req, res, next, id) => {
-  const Rooms = await fetchRooms(id, next);
+router.param("roomId", async (req, res, next, roomId) => {
+  const Rooms = await fetchRooms(roomId, next);
   if (Rooms) {
     req.rooms = Rooms;
     next();
@@ -28,9 +28,9 @@ router.get("/", roomsList);
 router.post("/book", roomsCreate);
 
 // Deleting Products
-router.delete("/:id", roomsDelete);
+router.delete("/:roomId", roomsDelete);
 
 // Updating Products
-router.put("/:id", roomsUpdate);
+router.put("/:roomId", roomsUpdate);
 
 module.exports = router;
