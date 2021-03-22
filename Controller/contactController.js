@@ -10,7 +10,7 @@ exports.fetchContact = async (contactId, next) => {
 };
 exports.contactCreate = async (req, res, next) => {
   try {
-    const newContact = await Hotel.create(req.body);
+    const newContact = await Contact.create(req.body);
     res.status(201).json(newContact);
   } catch (error) {
     next(error);
@@ -18,7 +18,7 @@ exports.contactCreate = async (req, res, next) => {
 };
 exports.contactList = async (req, res, next) => {
   try {
-    const contacts = await Hotel.findAll({
+    const contacts = await Contact.findAll({
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
     res.json(contacts);
@@ -26,18 +26,18 @@ exports.contactList = async (req, res, next) => {
     next(error);
   }
 };
-exports.hotelDelete = async (req, res, next) => {
+exports.contactDelete = async (req, res, next) => {
   try {
-    await req.hotel.destroy();
+    await req.contact.destroy();
     res.status(204).end();
   } catch (err) {
     next(error);
   }
 };
 
-exports.hotelUpdate = async (req, res, next) => {
+exports.contactUpdate = async (req, res, next) => {
   try {
-    await req.hotel.update(req.body);
+    await req.contact.update(req.body);
     res.status(204).end();
   } catch (err) {
     next(error);

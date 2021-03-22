@@ -36,7 +36,7 @@ exports.hotelList = async (req, res, next) => {
       include: {
         model: Rooms,
         as: "HotelRooms",
-        attributes: ["Roomnum"],
+        attributes: ["id"],
       },
     });
     res.json(hotels);
