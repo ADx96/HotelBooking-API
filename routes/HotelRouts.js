@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const upload = require("../middlware/multer");
 
 // controllers
 const {
@@ -26,13 +27,13 @@ router.param("hotelId", async (req, res, next, hotelId) => {
 router.get("/", hotelList);
 
 // Adding Products
-router.post("/", hotelCreate);
-router.post("/:hotelId/rooms", roomsCreate);
+router.post("/", upload.single("image"), hotelCreate);
+router.post("/:hotelId/Rooms", roomsCreate);
 
 // Deleting Products
 router.delete("/:hotelId", hotelDelete);
 
 // Updating Products
-router.put("/:hotelId", hotelUpdate);
+router.put("/:hotelId", upload.single("image"), hotelUpdate);
 
 module.exports = router;

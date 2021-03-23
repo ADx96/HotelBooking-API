@@ -18,23 +18,18 @@ exports.bookingCreate = async (req, res, next) => {
 };
 exports.bookingList = async (req, res, next) => {
   try {
-    const booking = await Booking.findAll({
+    const bookings = await Booking.findAll({
       attributes: { exclude: ["createdAt", "updatedAt"] },
-      include: {
-        model: Booking,
-        as: "Booking",
-        attributes: ["id"],
-      },
     });
 
-    res.json(booking);
+    res.json(bookings);
   } catch (error) {
     next(error);
   }
 };
 exports.bookingDelete = async (req, res, next) => {
   try {
-    await req.booking.destroy();
+    await req.bookings.destroy();
     res.status(204).end();
   } catch (err) {
     next(error);

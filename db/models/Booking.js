@@ -11,17 +11,23 @@ module.exports = (sequelize, DataTypes) => {
 
     price: {
       type: DataTypes.INTEGER,
-      defaultValue: 5,
+      defaultValue: 0,
+      validate: {
+        min: 1,
+      },
+    },
+    mobile: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
       validate: {
         min: 1,
       },
     },
     Date: {
-      type: DataTypes.INTEGER,
-      defaultValue: 5,
-      validate: {
-        min: 1,
-      },
+      type: DataTypes.STRING,
+    },
+    EndDate: {
+      type: DataTypes.STRING,
     },
     customerpassportnumber: {
       type: DataTypes.INTEGER,
@@ -34,12 +40,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Roomnum: {
-      type: DataTypes.INTEGER,
-      defaultValue: 5,
-      validate: {
-        min: 1,
-      },
+
+    movienight: {
+      type: DataTypes.BOOLEAN,
     },
   });
 

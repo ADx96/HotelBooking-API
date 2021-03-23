@@ -2,8 +2,8 @@ const { Contact } = require("../db/models");
 
 exports.fetchContact = async (contactId, next) => {
   try {
-    const contact = await Contact.findByPk(contactId);
-    return contact;
+    const contacts = await Contact.findByPk(contactId);
+    return contacts;
   } catch (error) {
     next(error);
   }
@@ -28,7 +28,7 @@ exports.contactList = async (req, res, next) => {
 };
 exports.contactDelete = async (req, res, next) => {
   try {
-    await req.contact.destroy();
+    await req.contacts.destroy();
     res.status(204).end();
   } catch (err) {
     next(error);
@@ -37,7 +37,7 @@ exports.contactDelete = async (req, res, next) => {
 
 exports.contactUpdate = async (req, res, next) => {
   try {
-    await req.contact.update(req.body);
+    await req.contacts.update(req.body);
     res.status(204).end();
   } catch (err) {
     next(error);

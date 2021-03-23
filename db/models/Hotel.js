@@ -7,10 +7,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     rating: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      validate: {
+        min: 0,
+      },
+    },
+    hotellocation: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
     slug: {
       type: DataTypes.STRING,
       unique: true,
@@ -21,18 +27,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     price: {
       type: DataTypes.INTEGER,
-      defaultValue: 5,
+      defaultValue: 0,
       validate: {
-        min: 1,
+        min: 0,
       },
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
   });
   SequelizeSlugify.slugifyModel(Hotel, {
-    source: ["Hotelname"],
+    source: ["hotelname"],
   });
   return Hotel;
 };

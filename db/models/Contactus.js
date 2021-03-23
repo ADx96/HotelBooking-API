@@ -5,19 +5,20 @@ module.exports = (sequelize, DataTypes) => {
     Customername: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
+    },
+    mobile: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
-      unique: true,
+      allowNull: false,
     },
     message: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   });
-  SequelizeSlugify.slugifyModel(Contact, {
-    source: ["Customername"],
-  });
+
   return Contact;
 };

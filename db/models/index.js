@@ -46,14 +46,14 @@ db.Sequelize = Sequelize;
 db.Hotel.hasMany(db.Rooms, {
   as: "HotelRooms",
   foreignKey: {
-    name: "HotelId",
+    name: "hotelId",
     allowNull: false,
   },
 });
 db.Rooms.belongsTo(db.Hotel, {
   as: "HotelRooms",
   foreignKey: {
-    name: "HotelId",
+    name: "hotelId",
     allowNull: false,
   },
 });
