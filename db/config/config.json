@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "postgres",
+    "username": "alameeri",
     "password": "abood",
     "database": "hotelbooking_db",
     "host": "127.0.0.1",

@@ -13,9 +13,9 @@ const {
 } = require("../Controller/hotelController");
 
 router.param("hotelId", async (req, res, next, hotelId) => {
-  const hotels = await fetchHotel(hotelId, next);
-  if (hotels) {
-    req.hotel = hotels;
+  const hotel = await fetchHotel(hotelId, next);
+  if (hotel) {
+    req.hotel = hotel;
     next();
   } else {
     const err = new Error("hotel ID must be wrong please try again");

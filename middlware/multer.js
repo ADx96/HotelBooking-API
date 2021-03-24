@@ -6,8 +6,6 @@ const storage = multer.diskStorage({
     cb(null, `${+new Date()}${file.originalname}`);
   },
 });
-
-// Initialize upload variable
 const upload = multer({
   storage,
 });

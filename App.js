@@ -4,7 +4,7 @@ const ContactRoutes = require("./routes/contactRoutes");
 const HotelsRoutes = require("./routes/HotelRouts");
 const RoomsRoutes = require("./routes/RoomsRoutes");
 const path = require("path");
-
+const slugify = require("slugify");
 const db = require("./db/models");
 
 const cors = require("cors");
@@ -12,14 +12,13 @@ const app = express();
 app.use(express.json());
 
 app.use(cors());
-const slugify = require("slugify");
 
 //Routes
+app.use("/media", express.static(path.join(__dirname, "media")));
 app.use("/Contact", ContactRoutes);
 app.use("/Bookings", BookingRoutes);
 app.use("/Hotels", HotelsRoutes);
 app.use("/Rooms", RoomsRoutes);
-app.use("/media", express.static(path.join(__dirname, "media")));
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({

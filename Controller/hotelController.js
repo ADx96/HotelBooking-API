@@ -9,13 +9,12 @@ exports.fetchHotel = async (hotelId, next) => {
   }
 };
 exports.hotelCreate = async (req, res, next) => {
-  if (req.file) {
-    req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
-  }
-
   try {
+    if (req.file) {
+      req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
+    }
     const newHotel = await Hotel.create(req.body);
-    res.status(201).json(newHotel);
+    res.status(201).json(req.body.image);
   } catch (error) {
     next(error);
   }
