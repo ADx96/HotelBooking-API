@@ -4,15 +4,25 @@ const ContactRoutes = require("./routes/contactRoutes");
 const HotelsRoutes = require("./routes/HotelRouts");
 const RoomsRoutes = require("./routes/RoomsRoutes");
 const path = require("path");
+const userRoutes = require("./routes/users");
 const slugify = require("slugify");
 const db = require("./db/models");
+const passport = require("passport");
+// Passport Strategies
+const { localStrategy } = require("./middleware/passport");
 
 const cors = require("cors");
 const app = express();
+
 app.use(express.json());
-
 app.use(cors());
+app.use(userRoutes);
+app.use(cors());
+app.use(passport.initialize());
 
+// Passport Setup
+app.use(passport.initialize());
+passport.use(localStrategy);
 //Routes
 app.use("/media", express.static(path.join(__dirname, "media")));
 app.use("/Contact", ContactRoutes);
